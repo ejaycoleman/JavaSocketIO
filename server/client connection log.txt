@@ -1,0 +1,13 @@
+5080 [nioEventLoopGroup-3-1] DEBUG io.netty.util.Recycler  - -Dio.netty.recycler.maxCapacity.default: 262144
+5084 [nioEventLoopGroup-3-1] DEBUG io.netty.util.internal.Cleaner0  - java.nio.ByteBuffer.cleaner(): available
+5096 [nioEventLoopGroup-3-1] DEBUG com.corundumstudio.socketio.handler.AuthorizeHandler  - Handshake authorized for sessionId: bcfb8aae-7fbc-41fd-94da-7758ee9642bb, query params: {EIO=[3], transport=[polling]} headers: {Connection=[Keep-Alive], User-Agent=[okhttp/3.8.1], Host=[localhost:5001], Accept-Encoding=[gzip], Accept=[*/*], Content-Length=[0]}
+5096 [nioEventLoopGroup-3-1] DEBUG com.corundumstudio.socketio.handler.ClientHead  - binding channel: [id: 0x0b799883, /127.0.0.1:56578 => /127.0.0.1:5001] to transport: POLLING
+5195 [nioEventLoopGroup-3-3] DEBUG com.corundumstudio.socketio.handler.ClientHead  - binding channel: [id: 0x335bac9e, /127.0.0.1:56580 => /127.0.0.1:5001] to transport: POLLING
+5197 [nioEventLoopGroup-3-2] DEBUG io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker  - [id: 0xf821a88d, /127.0.0.1:56579 => /127.0.0.1:5001] WebSocket version V13 server handshake
+5201 [nioEventLoopGroup-3-2] DEBUG io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker  - WebSocket version 13 server handshake key: sGm35rDOyDBPn2QrpMiOgA==, response: WV72b2pY2LCfE5Y4UG8ctjoKb1c=
+5216 [nioEventLoopGroup-3-5] DEBUG com.corundumstudio.socketio.handler.ClientHead  - binding channel: [id: 0x40545c1a, /127.0.0.1:56582 => /127.0.0.1:5001] to transport: POLLING
+5224 [nioEventLoopGroup-3-6] DEBUG com.corundumstudio.socketio.SocketIOChannelInitializer  - Client with sessionId: bcfb8aae-7fbc-41fd-94da-7758ee9642bb disconnected
+5225 [nioEventLoopGroup-3-6] DEBUG com.corundumstudio.socketio.transport.NamespaceClient  - Client bcfb8aae-7fbc-41fd-94da-7758ee9642bb for namespace  has been disconnected
+5230 [nioEventLoopGroup-3-7] ERROR com.corundumstudio.socketio.transport.PollingTransport  - bcfb8aae-7fbc-41fd-94da-7758ee9642bb is not registered. Closing connection
+5231 [nioEventLoopGroup-3-2] WARN com.corundumstudio.socketio.transport.WebSocketTransport  - Unauthorized client with sessionId: bcfb8aae-7fbc-41fd-94da-7758ee9642bb with ip: /127.0.0.1:56579. Channel closed!
+5236 [nioEventLoopGroup-3-4] DEBUG com.corundumstudio.socketio.handler.InPacketHandler  - Can't find namespace client in namespace: , sessionId: bcfb8aae-7fbc-41fd-94da-7758ee9642bb probably it was disconnected.

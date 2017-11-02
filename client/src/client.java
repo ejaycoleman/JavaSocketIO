@@ -10,7 +10,7 @@ public class client {
 	public static void main(final String[] args) throws URISyntaxException
 	   {
 	
-			Socket socket = IO.socket("http://localhost:5002");
+			Socket socket = IO.socket("http://localhost:5001");
 			socket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {
 		
 			  @Override
