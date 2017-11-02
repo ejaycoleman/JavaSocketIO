@@ -38,6 +38,7 @@ public class server {
         server.addEventListener("toServer", String.class, new DataListener<String>() {
             @Override
             public void onData(SocketIOClient client, String data, AckRequest ackRequest) {
+            		System.out.println("recieved");
                 client.sendEvent("toClient", "server recieved " + data);
             }
         });

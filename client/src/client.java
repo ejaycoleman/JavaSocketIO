@@ -6,30 +6,34 @@ import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 
 
+
 public class client {
-	public static void main(final String[] args) throws URISyntaxException
-	   {
+	static private Socket socket;
+	static private final int PORT = 5001;
 	
-			Socket socket = IO.socket("http://localhost:5001");
-			socket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {
-		
-			  @Override
-			  public void call(Object... args) {
-			    socket.emit("message", "hi");
-			    socket.disconnect();
-			  }
-		
-			}).on("event", new Emitter.Listener() {
-		
-			  @Override
-			  public void call(Object... args) {}
-		
-			}).on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
-		
-			  @Override
-			  public void call(Object... args) {}
-		
-			});
-			socket.connect();
+	
+	public static void main(final String[] args) throws URISyntaxException, InterruptedException
+	   {
+			socket = IO.socket("http://localhost:" + PORT);
+	        socket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {
+	            @Override
+	            public void call(Object... objects) {
+	                socket.emit("toServer", "connected");
+	                socket.send("test");
+	            }
+	        });
+	        socket.on("toClient", new Emitter.Listener() {
+	            @Override
+	            public void call(Object... args) {
+	                System.out.println("Client recievd : " + args[0]);
+	
+	            }
+	        });
+	        socket.connect();
+	        while (!socket.connected())
+	            Thread.sleep(50);
+	        socket.send("toServer");
+	        Thread.sleep(10000);
+	        socket.disconnect();
 	   }
 }
