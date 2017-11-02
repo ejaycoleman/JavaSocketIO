@@ -8,7 +8,7 @@ import io.socket.emitter.Emitter;
 
 
 public class client {
-	// instantiate Socket object
+	// instantiate Socket object as socket
 	static private Socket socket;
 	// define constant called port, used to connect to the server
 	static private final int PORT = 5001;
