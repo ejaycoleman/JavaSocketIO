@@ -1,5 +1,4 @@
 import java.io.UnsupportedEncodingException;
-import java.net.URISyntaxException;
 
 import org.apache.log4j.BasicConfigurator;
 
@@ -19,7 +18,7 @@ public class server {
             @Override
             public void run() {
                 try {
-                    server();
+                    runServer();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (UnsupportedEncodingException e) {
@@ -30,7 +29,7 @@ public class server {
         ts.start();
 
     }
-    public static void server() throws InterruptedException, UnsupportedEncodingException {
+    public static void runServer() throws InterruptedException, UnsupportedEncodingException {
         Configuration config = new Configuration();
         config.setHostname("localhost");
         config.setPort(PORT);
@@ -39,7 +38,7 @@ public class server {
             @Override
             public void onData(SocketIOClient client, String data, AckRequest ackRequest) {
             		System.out.println("recieved");
-                client.sendEvent("toClient", "server recieved " + data);
+                client.sendEvent("toClient", "server received " + data);
             }
         });
         server.addEventListener("message", String.class, new DataListener<String>() {
@@ -53,39 +52,3 @@ public class server {
         server.stop();
     }
 }
-
-
-
-
-/*
-
-
-import com.corundumstudio.socketio.listener.*;
-import com.corundumstudio.socketio.*;
-
-public class server {
-	public static void main(String[] args) throws InterruptedException {
-
-        Configuration config = new Configuration();
-        config.setHostname("localhost");
-        config.setPort(9092);
-
-        final SocketIOServer server = new SocketIOServer(config);
-        server.addEventListener("chatevent", null, null {
-            @Override
-            public void onData(SocketIOClient client, ChatObject data, AckRequest ackRequest) {
-                // broadcast messages to all clients
-                server.getBroadcastOperations().sendEvent("chatevent", data);
-            }
-        });
-
-        server.start();
-
-        Thread.sleep(Integer.MAX_VALUE);
-
-        server.stop();
-    }
-}
-
-
-*/
